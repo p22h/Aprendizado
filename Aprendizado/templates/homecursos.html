@@ -1,0 +1,246 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+Filmes
+{% endblock %}
+
+{%block head%}
+    <style>
+              $itemGrow: 1.2;
+        $duration: 250ms;
+
+        html {
+          scroll-behavior: smooth;
+        }
+
+        body {
+          margin: 0;
+          background-color: #000;
+        }
+
+        h1 {
+          font-family: Arial;
+          color: red;
+          text-align: center;
+        }
+
+        .wrapper {
+          display: grid;
+          grid-template-columns: repeat(3,100%);
+          overflow:hidden;
+          scroll-behavior: smooth;
+
+          section {
+            width: 100%;
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(5, auto);
+            margin: 20px 0;
+
+            .item {
+              padding: 0 2px;
+              transition: $duration all;
+
+              &:hover {
+                margin: 0 40px;
+                transform: scale(1.2);
+              }
+
+            }
+
+            a {
+              position: absolute;
+              color: #fff;
+              text-decoration: none;
+              font-size: 6em;
+              background:rgb(0,0,0);
+              width: 80px;
+              padding: 20px;
+              text-align: center;
+              z-index: 1;
+
+              &:nth-of-type(1) {
+                top:0; bottom:0; left:0;
+                background: linear-gradient(-90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+              }
+              &:nth-of-type(2) {
+                top:0; bottom:0; right: 0;
+                background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+              }
+
+            }
+
+          }
+        }
+
+        // Remove the arrow for Mobile
+        @media only screen and (max-width: 600px) {
+          a.arrow__btn {
+            display:none;
+          }
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<main class='bg-primary_black min-h-screen w-full'>
+        <section class="h-screen relative bg-no-repeat pb-8 pl-6 flex items-end bg-cover" style="background-image: url('{{destaque.Imagem_do_Curso.url}}');">
+            <div>
+                <h2 class="text-6xl font-semibold text-white my-4">
+                    {{ destaque.Nome_do_Curso}}
+                </h2>
+                <p class=" w-11/12 md:w-5/12 font-medium text-white my-4">
+                    {{ destaque.Descrição_do_Curso}}
+                </p>
+                <div class="flex my-4">
+                    <a href={% url 'Aprendizado:detalhescursos' destaque.pk %}">
+                        <button class="flex items-center bg-white py-2 px-5 rounded-md" style='color:black;'>
+                            <ion-icon name="play" class="text-2xl"></ion-icon>
+                            <span class="ml-3 font-medium " >
+                                Acessar
+                            </span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <section class='bg-primary_black flex justify-center py-10'>
+            <div class="p-8 w-10/12 relative" >
+                <h2 class="text-gray-200 text-2xl font-medium">
+                    Novos
+                </h2>
+                <div class="wrapper">
+                    <section id="section1" class="flex flex-nowrap items-center justify-center space-x-8">
+                      <a href="#section2" class="arrow__btn text-6xl page">‹</a>
+                         {% for Aprendizado in lista_cursos_recentes %}
+                         {% if forloop.counter < 4 %}
+                         <div class="item h-64 w-1/4 m-4">
+                             <a href="{% url 'Aprendizado:detalhescursos' Aprendizado.pk %}">
+                              <img src="{{Aprendizado.Imagem_do_Curso.url}}" class="rounded-md w-full h-full object-cover">
+                             </a>
+                         </div>
+                          {% endif %}
+                          {% endfor %}
+                        <a href="#section2" class="arrow__btn text-6xl">›</a>
+                  </section>
+                    {$ if  lista_cursos_recentes|length > 4 %}
+                        <section id="section2" class="flex flex-nowrap items-center justify-center">
+                                <a href="#section1" class="arrow__btn text-6xl">‹</a>
+                                  {% for Aprendizado in lista_cursos_recentes %}
+                                  {% if forloop.counter > 4 %}
+                                    <div class="item h-64 w-1/4 m-4">
+                                       <a href="{% url 'Aprendizado:detalhescursos' Aprendizado.pk %}">
+                                            <img src="{{Aprendizado.Imagem_do_Curso.url}}" class="rounded-md w-full h-full object-cover"
+                                       </a>
+                                    </div>
+                                 {% endif %}
+                                 {% endfor %}
+                                <a href="#section1" class="arrow__btn text-6xl">›</a>
+                        </section>
+                </div>
+            </div>
+        </section>
+
+
+             <div class="py-10 px-30" >
+                <h1>PhD Insights - Cursos </h1>
+             </div>
+             <div class="py-9 px-30" >
+
+                <h1> Página de Cursos</h1>
+                 <br>
+                {%for Aprendizado in object_list %}
+                <hr>
+
+                <a href="{% url 'Aprendizado:detalhescursos' Aprendizado.pk %}"><p><h1>{{Aprendizado.Nome_do_Curso}}</h1></p></a>
+                <center><img   src="{{Aprendizado.Imagem_do_Curso.url}}" width="200" height="50" ></center>
+                <p>Categoria: {{Aprendizado.Categoria_dos_Cursos}}</p>
+                <p>Descrição do curso: {{Aprendizado.Descrição_do_Curso}}</p>
+
+                <p>Prazo do curso: {{Aprendizado.Prazo_do_Curso}}</p>
+                <p>Visualizações: {{Aprendizado.Quantidade_de_Vizualizações}}</p>
+                <p>Data de criação do curso: {{Aprendizado.Data_de_Criação}}</p>
+                <p>Data de finalização do curso: {{Aprendizado.Data_de_Finalização}}</p>
+                {% endfor%}
+            </div>
+
+            <div class="py-9 px-30">
+                <h3>
+                    Filmes recentes
+                    <br>
+                     <div class="wrapper">
+                             <section id="sectionrecentes" class="flex flex-nowrap items-center justify-center space-x-8">
+                                 <a href="#sectionrecentes" class="arrow__btn text-6xl page">‹</a>
+                                 {% for Aprendizado in lista_cursos_recentes %}
+                                 {% if forloop.counter < 4 %}
+                                 <div class="item h-64 w-1/4 m-4">
+                                     <a href="{% url 'Aprendizado:detalhescursos' Aprendizado.pk %}">
+                                         <img src="{{Aprendizado.Imagem_do_Curso.url}}" class="rounded-md w-full h-full object-cover">
+                                     </a>
+                                 </div>
+                                 {% endif %}
+                                 {% endfor %}
+                                 <a href="#section1visto" class="arrow__btn text-6xl"></a>
+                </h3>
+            </div>
+
+
+            <div class="py-9 px-30">
+                <h3>
+                    Filmes Top
+                    <br>
+
+                </h3>
+               <div class="wrapper">
+                        <section id="sectiontop" class="flex flex-nowrap items-center justify-center space-x-8">
+                          <a href="#sectiontop" class="arrow__btn text-6xl page">‹</a>
+                             {% for Aprendizado in lista_cursos_top %}
+                             {% if forloop.counter < 4 %}
+                             <div class="item h-64 w-1/4 m-4">
+                                 <a href="{% url 'Aprendizado:detalhescursos' Aprendizado.pk %}">
+                                  <img src="{{Aprendizado.Imagem_do_Curso.url}}" class="rounded-md w-full h-full object-cover">
+                                 </a>
+                             </div>
+                            {% endif %}
+                                    {% endfor %}
+                                    <a href="#section1visto" class="arrow__btn text-6xl">
+                                                    ›
+                                    </a>
+            </div>
+
+
+        <section class='bg-primary_black flex justify-center py-10'>
+                <div class="p-8 w-10/12 relative" >
+                    <h2 class="text-gray-200 text-2xl font-medium">
+                        Continuar assistindo...
+                    </h2>
+                    <div class="wrapper">
+
+
+                                <section id="section2visto" class="flex flex-nowrap items-center justify-center">
+                                    <a href="#section1visto" class="arrow__btn text-6xl">
+                                        ‹
+                                    </a>
+                                    {% for Aprendizado in request.user.cursos_vistos.all %}
+
+                                    <div class="item h-64 w-1/4 m-4">
+                                                <a href="{% url 'Aprendizado:detalhescursos' Aprendizado.pk %}">
+                                                    <img src="{{Aprendizado.Imagem_do_Curso.url}}" class="rounded-md w-full h-full object-cover"
+                                                </a>
+                                    </div>
+                                    
+                                    {% endfor %}
+                                    <a href="#section1visto" class="arrow__btn text-6xl">
+                                                    ›
+                                    </a>
+
+                                </section>
+
+</main>
+
+{% endblock %}

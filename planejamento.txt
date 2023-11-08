@@ -1,0 +1,73 @@
+- Home Page
+    - Sobre
+    - Informações de saúde
+    - Comentários
+    - Fotos
+    - Inscrição
+    - Lista de produtos
+
+- Login e criar contas
+    - Edição do Perfil
+    - Dashboard de produtos
+    - Dashborad de consultas
+    - Dashboard de pagamentos
+    - Dashboard de cursos
+    - Dashboard de indicação
+    - Dashboard de descontos
+    - Noticias e progagandas internas
+
+- Ananmeses
+    - Formulário
+    - Exame fisico
+    - Exame bucal
+    - Exames radiográficos
+    - Exames complementares
+        - Hemograma
+        - Hematócrito
+        - Linfograma
+        - Prototrombina
+        - Nutricional
+        - Ferro
+        - Outros
+    - Medicação
+
+
+- Planos de Tratamento
+
+- Consultas e agendamentos
+
+- Prescrição medicamentosa
+
+- Pagamentos
+
+- Relacionamento de usuários
+
+- Marketing
+    - Emails
+    - Facebook
+    - Instagran
+    - WhatsApp
+    - Planfletos
+    - Áudio
+
+- Estoque
+    - materiais odontológicos
+    - materiais de limpeza
+    - materiais de propaganda
+    - equipamentos
+    - instrumentais
+
+- Financeiro Clinica
+
+- Aprendizado
+    - categorias de cursos
+    - nome_cursos
+    - descrição
+    - quantidade de views
+    - data criação
+    - data experiração
+
+- Sistema de Segurança
+    - Presença
+    - Cameras
+    - Áudios
