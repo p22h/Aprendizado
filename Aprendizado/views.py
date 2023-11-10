@@ -1,4 +1,5 @@
 from django.shortcuts import render , redirect, reverse
+
 from .models import Aprendizado, Usuario
 from .forms import CriarContaForm, FormHomepage
 from django.views.generic import TemplateView, ListView, DetailView, FormView, UpdateView
@@ -91,5 +92,5 @@ class Criarconta(FormView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse ('Aprendizado:login')
+        return reverse('Aprendizado:login')
 
