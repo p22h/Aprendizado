@@ -4,8 +4,10 @@
 
 from django.urls import path, include, reverse_lazy
 from .views import Homepage, Homecursos, Detalhescursos, Pesquisacurso, Paginaperfil, Criarconta
-#from django.contrib.auth import views as auth_view
-from django.contrib.auth.views import LoginView
+
+
+from django.contrib.auth import views as auth_view
+
 app_name = "Aprendizado"
 
 urlpatterns = [

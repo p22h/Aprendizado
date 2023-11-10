@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "Aprendizado",
     "crispy_forms",
     "crispy_bootstrap5",
-    "signals",
+
 ]
 
 MIDDLEWARE = [
@@ -154,7 +154,7 @@ EMAIL_USE_TLS=config('EMAIL_USE_TLS')
 EMAIL_PORT=config('EMAIL_PORT')
 EMAIL_HOST=config('EMAIL_HOST')
 
-
+#configuração envio SMS API Twilio
 TWILIO_ACCOUNT_SID = 'ACe4b21689004dea3224f93242dc5a581b'
 TWILIO_AUTH_TOKEN = '1a5bef47ca8b0e44ad2ff5fe04b99dd7'
 TWILIO_PHONE_NUMBER = '+16187871872'

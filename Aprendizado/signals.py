@@ -1,9 +1,10 @@
-# signals.py
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from twilio.rest import Client
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.conf import settings
+
+User = get_user_model()
 
 @receiver(post_save, sender=User)
 def send_sms_on_user_creation(sender, instance, created, **kwargs):
@@ -13,5 +14,7 @@ def send_sms_on_user_creation(sender, instance, created, **kwargs):
         message = client.messages.create(
             to='+5535998232283',  # Substitua pelo número real do destinatário
             from_=settings.TWILIO_PHONE_NUMBER,
-            body=f'Novo usuário cadastrado: {instance.username}'
+            body=f'Novo usuário cadastrado no site: {instance.username}'
         )
+
+
