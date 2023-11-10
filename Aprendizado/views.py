@@ -1,4 +1,4 @@
-from django.shortcuts import render , redirect, reverse
+from django.shortcuts import render, redirect, reverse
 
 from .models import Aprendizado, Usuario
 from .forms import CriarContaForm, FormHomepage
