@@ -26,7 +26,7 @@ class Homepage(FormView):
         email = self.request.POST.get("email")
         usuarios = Usuario.objects.filter(email=email)
         if usuarios:
-            return reverse ('Aprendizado:login')
+            return reverse('Aprendizado:login')
         else:
             return reverse('Aprendizado:criarconta')
 
