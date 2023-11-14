@@ -39,7 +39,7 @@ PhD Insights
                     <form method="post" class="w-4/40 justify-center">
                         {% csrf_token %}
                         <br>
-                        <!--<div class="flex flex-grow items-stretch">
+                        <div class="flex flex-grow items-stretch">
 
                             {{ form}}
 
@@ -49,7 +49,7 @@ PhD Insights
                             </span>
                             <ion-icon name="chevron-forward-outline" class="text-2xl"></ion-icon>
                         </button>
-                        </div>-->
+                        </div>
                     </form>
                 </div>
             </div>
@@ -57,7 +57,7 @@ PhD Insights
         </div>
     </header>
 
-    <section class='flex flex-col md:flex-row items-center border-gray-900 border-b-8' style="min-height: 70vh;">
+    <!--<section class='flex flex-col md:flex-row items-center border-gray-900 border-b-8' style="min-height: 70vh;">
         <div class="md:w-1/2 flex flex-col justify-center text-center md:text-left p-5 md:p-10 ">
             <h2 class="md:text-5xl text-4xl font-semibold mb-4">
                 Enjoy on your TV.
@@ -99,14 +99,28 @@ PhD Insights
         <div class='md:w-1/2 flex justify-center items-center'>
             <img src="{% static 'images/netflix_kid.png' %}" class="w-8/12" alt="">
         </div>
-    </section>
+    </section>-->
+
     <footer class=" px-5 py-10 ">
         <ul class="flex justify-between items-center">
 
             <li>&copy; 2023</li>
             <li> Feito com Python (Django)</li>
+            <li>
+                <p>
+                    <a href="https://achecks.org/checker/index.php?uri=referer&gid=WCAG2-AA">
+                      <img src="https://achecks.org/images/icon_W2_aa.jpg" alt="WCAG 2.0 (Level AA)" height="32" width="102" />
+                    </a>
+                </p>
+            </li>
             <li>PhD Insights</li>
+
+
+
         </ul>
+        <p>
+
+        </p>
     </footer>
 
 {% endblock %}

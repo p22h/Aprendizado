@@ -23,15 +23,15 @@
 
         document.addEventListener("scroll",e=>{
 
-            if(scrollY>100){
+            if(scrollY>10){
                 if(scrollY>window.innerHeight){
                 nav.classList.add('invisible')
             }else{
-                nav.classList.add('bg-gray-500')
+                nav.classList.add('bg-gray-400')
                 nav.classList.remove('invisible')
             }
             }else{
-                nav.classList.remove('bg-gray-500')
+                nav.classList.remove('bg-gray-400')
                 nav.classList.remove('invisible')
             }
         })
