@@ -156,3 +156,9 @@ EMAIL_HOST=config('EMAIL_HOST')
 TWILIO_ACCOUNT_SID = 'ACe4b21689004dea3224f93242dc5a581b'
 TWILIO_AUTH_TOKEN = '1a5bef47ca8b0e44ad2ff5fe04b99dd7'
 TWILIO_PHONE_NUMBER = '+16187871872'
+
+MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # ... all your other middleware
+]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
