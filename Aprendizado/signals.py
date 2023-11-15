@@ -28,15 +28,14 @@ def send_sms_on_user_creation(sender, instance, created, **kwargs):
 # signals.py
 
 
-User = get_user_model()
+#User = get_user_model()
 
-@receiver(post_save, sender=User)
-def send_sms_on_user_creation(sender, instance, created, **kwargs):
-    if created:
-        client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+#@receiver(post_save, sender=User)
+#def send_sms_on_user_creation(sender, instance, created, **kwargs):
+    #if created:
+        #client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
 
-        message = client.messages.create(
-            to='+5535998232283',  # Substitua pelo número real do destinatário
-            from_=settings.TWILIO_PHONE_NUMBER,
-            body=f'Novo usuário cadastrado: {instance.username}'
-        )
+        #message = client.messages.create(
+           # to='+5535998232283',  # Substitua pelo número real do destinatário
+           # from_=settings.TWILIO_PHONE_NUMBER,
+           # body=f'Novo usuário cadastrado: {instance.username}')
