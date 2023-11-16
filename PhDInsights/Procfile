@@ -1,1 +1,2 @@
-web: gunicorn PhDInsights.wsgi --log-file -
+#web: gunicorn PhDInsights.wsgi --log-file -
+web: gunicorn PhDInsights.wsgi:application --log-file -
