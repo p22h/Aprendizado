@@ -1,0 +1,3 @@
+web: gunicorn PhDInsights.wsgi:application
+
+gunicorn = gunicorn -w 3 PhDInsights:app
