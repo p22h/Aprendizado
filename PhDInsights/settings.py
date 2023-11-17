@@ -9,14 +9,9 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-import os
+
 from pathlib import Path
 from decouple import config
-import os
-os.environ['DJANGO_SETTINGS_MODULE'] = 'PhDInsights.settings'
-#from decouple import Config, Csv
-#config = Config()
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-w2*1km)@-8#)e&m*ze75hzgu_j*r%_0&y=%tkbt_6zw3cql#mn"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['aprendizado.onrender.com', '127.0.0.1:8000']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -50,7 +45,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -124,13 +118,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = "static/"
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'staticfiles'),
-]
+    BASE_DIR / "static",
 
+]
 MEDIA_URL = "media/"
 
 MEDIA_ROOT = BASE_DIR / "media"
@@ -160,14 +153,12 @@ EMAIL_USE_TLS=config('EMAIL_USE_TLS')
 EMAIL_PORT=config('EMAIL_PORT')
 EMAIL_HOST=config('EMAIL_HOST')
 
-# configuração da API TWILIO
 TWILIO_ACCOUNT_SID = 'ACe4b21689004dea3224f93242dc5a581b'
 TWILIO_AUTH_TOKEN = '1a5bef47ca8b0e44ad2ff5fe04b99dd7'
 TWILIO_PHONE_NUMBER = '+16187871872'
 
-
-
 #MIDDLEWARE = [
-    #'whitenoise.middleware.WhiteNoiseMiddleware',
-    # ... all your other middleware]
+   # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    # ... all your other middleware
+#]
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
